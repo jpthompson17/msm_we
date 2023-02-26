@@ -7,9 +7,7 @@ import scipy.sparse as sparse
 
 from westpa.core.data_manager import WESTDataManager
 from westpa.core.h5io import WESTPAH5File
-from westpa.core.segment import Segment
-from westpa.core.states import InitialState
-from typing import Mapping, Union
+from typing import Union
 
 
 def get_history_graph(we_h5file: Union[WESTPAH5File, str]) -> nx.DiGraph:
@@ -55,10 +53,7 @@ def get_history_graph(we_h5file: Union[WESTPAH5File, str]) -> nx.DiGraph:
     return history_graph
 
 
-def child_to_parent_mapping(
-        history_graph: nx.DiGraph,
-        degree: int = 1,
-) -> Mapping[Segment, Union[Segment, InitialState]]:
+def child_to_parent_mapping(history_graph, degree=1):
     adjacency_matrix = nx.adjacency_matrix(history_graph) ** degree
     nodes = list(history_graph.nodes)
     mapping = {}
