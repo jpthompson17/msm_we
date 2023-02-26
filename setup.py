@@ -24,6 +24,8 @@ requirements = [
     "toml",
     "matplotlib",
     "deeptime",
+    "westpa>=2022.01",
+    "networkx>=3.0",
 ]
 
 setup_requirements = [
